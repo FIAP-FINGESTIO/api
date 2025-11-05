@@ -16,7 +16,7 @@ import br.com.fingestio.api.utils.ErrorCode;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/transaction")
+@RequestMapping("/api/transaction")
 public class TransactionController {
 
     @Autowired
