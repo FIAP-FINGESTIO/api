@@ -38,6 +38,7 @@ public class TransactionService {
         transaction.setCurrency(createRequest.getCurrency());
         transaction.setUserId(createRequest.getUserId());
         transaction.setCategoryId(createRequest.getCategoryId());
+        transaction.setCardId(createRequest.getCardId());
         transaction.setOccurredAt(new java.sql.Timestamp(createRequest.getOccurredAt().getTime()));
         transaction.setDueDate(
                 createRequest.getDueDate() != null ? new java.sql.Timestamp(createRequest.getDueDate().getTime())
@@ -64,6 +65,7 @@ public class TransactionService {
         transaction.setAmount(updateRequest.getAmount());
         transaction.setCurrency(updateRequest.getCurrency());
         transaction.setCategoryId(updateRequest.getCategoryId());
+        transaction.setCardId(updateRequest.getCardId());
         transaction.setOccurredAt(new java.sql.Timestamp(updateRequest.getOccurredAt().getTime()));
         transaction.setIsRecurring(Global.convertBooleanStringToYesNo(updateRequest.getIsRecurring()));
         transaction.setDueDate(
