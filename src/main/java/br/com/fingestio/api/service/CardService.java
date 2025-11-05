@@ -26,7 +26,7 @@ public class CardService{
     private UserRepository userRepository;
 
     public List<Card> getCardsByUserId(Long userId) {
-        return cardRepository.findByUserId(userId);
+        return cardRepository.findByOwnerId(userId);
     }
 
     public Card create(CreateRequest createRequest) {
@@ -39,7 +39,7 @@ public class CardService{
             throw new RuntimeException("Usuário não encontrado");
         }
 
-        List<Card> existingCards = cardRepository.findByUserId( createRequest.getUserId());
+        List<Card> existingCards = cardRepository.findByOwnerId( createRequest.getUserId());
         if (!existingCards.isEmpty()) {
             throw new RuntimeException("Já existe um cartão com este nome para o usuário");
         }
@@ -50,6 +50,7 @@ public class CardService{
         card.setLastFourDigits(createRequest.getLastFourDigits());
         String shared = Global.convertBooleanStringToYesNo(createRequest.getShared());
         card.setShared(shared);
+        card.setOwnerId(createRequest.getUserId());
         card.setCreatedAt(new Timestamp(System.currentTimeMillis()));
         card.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
 
@@ -65,8 +66,8 @@ public class CardService{
         Card card = cardOptional.get();
 
         if (updateRequest.getAlias() != null && !updateRequest.getAlias().equals(card.getAlias())) {
-            List<Card> existingCards = cardRepository.findByUserIdAndAlias(
-                card.getUserId(), 
+            List<Card> existingCards = cardRepository.findByOwnerIdAndAlias(
+                card.getOwnerId(), 
                 updateRequest.getAlias()
             );
             if (!existingCards.isEmpty()) {

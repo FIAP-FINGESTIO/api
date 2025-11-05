@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import br.com.fingestio.api.service.CardService;
-import br.com.fingestio.api.dto.card.CreateRequest; // DTO específico do Card
-import br.com.fingestio.api.dto.card.UpdateRequest; // DTO específico do Card
+import br.com.fingestio.api.dto.card.CreateRequest; 
+import br.com.fingestio.api.dto.card.UpdateRequest; 
 import br.com.fingestio.api.model.Card;
 import br.com.fingestio.api.utils.ApiResponse;
 import br.com.fingestio.api.utils.ErrorCode;
