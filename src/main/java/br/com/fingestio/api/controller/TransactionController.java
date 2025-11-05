@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import br.com.fingestio.api.service.TransactionService;
 import br.com.fingestio.api.dto.transaction.CreateRequest;
+import br.com.fingestio.api.dto.transaction.UpdateRequest;
 import br.com.fingestio.api.model.Transaction;
 import br.com.fingestio.api.utils.ApiResponse;
 import br.com.fingestio.api.utils.ErrorCode;
@@ -96,9 +97,9 @@ public class TransactionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse<Transaction>> updateTransaction(@PathVariable Long id, @Valid @RequestBody CreateRequest updateRequest) {
+    public ResponseEntity<ApiResponse<Transaction>> updateTransaction(@PathVariable Long id, @Valid @RequestBody UpdateRequest updateRequest) {
         try {
-            Transaction transaction = transactionService.payTransaction(id);
+            Transaction transaction = transactionService.updateTransaction(id, updateRequest);
             ApiResponse<Transaction> response = ApiResponse.success("Transação paga com sucesso", transaction);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
