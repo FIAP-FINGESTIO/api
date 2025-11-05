@@ -20,9 +20,8 @@ public class Card {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "user_id")
+    private Long userId;
 
     // Getters and Setters
     public Long getId() {
@@ -67,10 +66,10 @@ public class Card {
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

@@ -33,7 +33,11 @@ public class CategoryService {
     }
 
     public Category create(CreateRequest createRequest) throws Exception {
-        Optional<User> userOptional = userRepository.findById(createRequest.getUserId());
+        Long userId = createRequest.getUserId();
+        if (userId == null) {
+            throw new Exception("ID do usuário não pode ser nulo");
+        }
+        Optional<User> userOptional = userRepository.findById(userId);
         if (!userOptional.isPresent()) {
             throw new Exception("Usuário não encontrado");
         }

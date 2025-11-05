@@ -12,7 +12,7 @@ import br.com.fingestio.api.utils.ErrorCode;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
     
     @Autowired

@@ -14,7 +14,7 @@ import br.com.fingestio.api.utils.ErrorCode;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/api/category")
 public class CategoryController {
     
     @Autowired
