@@ -39,11 +39,6 @@ public class CardService{
             throw new RuntimeException("Usuário não encontrado");
         }
 
-        List<Card> existingCards = cardRepository.findByOwnerId( createRequest.getUserId());
-        if (!existingCards.isEmpty()) {
-            throw new RuntimeException("Já existe um cartão com este nome para o usuário");
-        }
-
         Card card = new Card();
         card.setIssuer(createRequest.getIssuer());
         card.setAlias(createRequest.getAlias());
